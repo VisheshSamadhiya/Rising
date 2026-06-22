@@ -1,11 +1,9 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini Shop</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,36 +24,27 @@
 <section class="products">
 
     <div class="product">
-        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500"
-             alt="Phone">
-
+        <img src="images/phone.jpg" alt="Phone">
         <h2>Smart Phone</h2>
         <p class="price">₹15,000</p>
-
         <button onclick="addToCart('Phone',15000)">
             Add To Cart
         </button>
     </div>
 
     <div class="product">
-        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500"
-             alt="Laptop">
-
+        <img src="images/laptop.jpg" alt="Laptop">
         <h2>Laptop</h2>
         <p class="price">₹55,000</p>
-
         <button onclick="addToCart('Laptop',55000)">
             Add To Cart
         </button>
     </div>
 
     <div class="product">
-        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"
-             alt="Headphones">
-
+        <img src="images/headphones.jpg" alt="Headphones">
         <h2>Headphones</h2>
         <p class="price">₹2,000</p>
-
         <button onclick="addToCart('Headphones',2000)">
             Add To Cart
         </button>
@@ -73,10 +62,13 @@
         <h3>Total: ₹<span id="total">0</span></h3>
     </div>
 
+    <button class="pay-btn" onclick="payNow()">
+        💳 Pay Now
+    </button>
+
 </section>
 
 <script src="app.js"></script>
 
 </body>
 </html>
-```

@@ -2,24 +2,34 @@ let cart = [];
 let total = 0;
 
 function addToCart(name, price) {
-  cart.push({ name, price });
+    cart.push({ name, price });
+    total += price;
 
-  total += price;
+    document.getElementById("cart-count").innerText = cart.length;
+    document.getElementById("total").innerText = total;
 
-  updateCart();
+    renderCart();
 }
 
-function updateCart() {
-  document.getElementById("cart-count").innerText = cart.length;
+function renderCart() {
+    const cartItems = document.getElementById("cart-items");
 
-  let cartList = document.getElementById("cart-items");
-  cartList.innerHTML = "";
+    cartItems.innerHTML = "";
 
-  cart.forEach(item => {
-    let li = document.createElement("li");
-    li.innerText = `${item.name} - ₹${item.price}`;
-    cartList.appendChild(li);
-  });
+    cart.forEach(item => {
+        const li = document.createElement("li");
+        li.innerText = `${item.name} - ₹${item.price}`;
+        cartItems.appendChild(li);
+    });
+}
 
-  document.getElementById("total").innerText = total;
+function payNow() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    alert(`Proceeding to payment of ₹${total}`);
+
+    // Future payment gateway integration
 }
