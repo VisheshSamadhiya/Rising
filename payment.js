@@ -1,30 +1,52 @@
-const express = require("express");
-const Razorpay = require("razorpay");
+let cart = [];
+let total = 0;
 
-const app = express();
-app.use(express.json());
+function addToCart(name, price) {
+    cart.push({ name, price });
+    total += price;
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET
-});
+    document.getElementById("cart-count").innerText = cart.length;
+    document.getElementById("total").innerText = total;
 
-app.post("/create-order", async (req, res) => {
-  const { items } = req.body;
+    renderCart();
+}
 
-  // Calculate on server
-  let total = 0;
+function renderCart() {
+    const cartItems = document.getElementById("cart-items");
+    cartItems.innerHTML = "";
 
-  for (const item of items) {
-    total += item.price * item.quantity;
-  }
+    cart.forEach(item => {
+        const li = document.createElement("li");
+        li.innerText = `${item.name} - ₹${item.price}`;
+        cartItems.appendChild(li);
+    });
+}
 
-  const order = await razorpay.orders.create({
-    amount: total * 100, // paise
-    currency: "INR"
-  });
+function payNow() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
 
-  res.json(order);
-});
+    checkout(total);
+}
 
-app.listen(3000);
+function checkout(amount) {
+    const result = confirm(
+        `🛒 Test Payment Gateway\n\nAmount: ₹${amount}\n\nClick OK to simulate payment success`
+    );
+
+    if (result) {
+        alert("✅ Payment Successful!");
+
+        cart = [];
+        total = 0;
+
+        document.getElementById("cart-count").innerText = 0;
+        document.getElementById("total").innerText = 0;
+
+        renderCart();
+    } else {
+        alert("❌ Payment Failed!");
+    }
+}
