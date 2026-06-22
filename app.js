@@ -29,7 +29,9 @@ function payNow() {
         return;
     }
 
-    alert(`Proceeding to payment of ₹${total}`);
-
-    // Future payment gateway integration
+    alert(`Proceeding to payment of ₹${total}`) 
+  }
+  
+function payNow() {
+    alert("Payment button clicked!");
 }
