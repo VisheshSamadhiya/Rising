@@ -1,144 +1,88 @@
+/* =========================
+   GLOBAL
+========================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Segoe UI,sans-serif;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
-    background:#f4f6f9;
+    background:#f5f7fb;
+    color:#333;
+    line-height:1.6;
 }
 
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar{
-    background:#071633;
+    background:#0f172a;
     color:white;
-    padding:25px 40px;
+    padding:20px 40px;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 .logo{
-    font-size:36px;
-    font-weight:bold;
+    font-size:32px;
+    font-weight:700;
 }
 
 .cart-icon{
-    font-size:22px;
+    font-size:20px;
+    background:#1e293b;
+    padding:10px 20px;
+    border-radius:8px;
 }
 
+/* =========================
+   HERO SECTION
+========================= */
+
 .hero{
-    text-align:center;
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
     color:white;
-    padding:80px 20px;
-    background:linear-gradient(90deg,#1976ff,#8a2be2);
+    text-align:center;
+    padding:100px 20px;
 }
 
 .hero h1{
     font-size:60px;
-    margin-bottom:10px;
+    margin-bottom:15px;
 }
 
 .hero p{
-    font-size:28px;
+    font-size:24px;
 }
+
+/* =========================
+   TITLES
+========================= */
 
 .title-section{
     text-align:center;
-    padding:50px;
+    padding:50px 20px 20px;
 }
 
-.products{
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
-    padding:20px;
+.title-section h2{
+    font-size:42px;
 }
 
-.product{
-    background:white;
-    border-radius:15px;
-    padding:20px;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,.1);
-}
-
-.product img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
-    border-radius:10px;
-}
-
-.product h3{
-    margin:20px 0 10px;
-    font-size:28px;
-}
-
-.price{
-    color:#16a34a;
-    font-size:30px;
-    font-weight:bold;
-}
-
-.product button{
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:8px;
-    background:#2563eb;
-    color:white;
-    margin-top:15px;
-    cursor:pointer;
-}
-
-.cart-box{
-    max-width:1200px;
-    margin:40px auto;
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,.1);
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-}
-
-th,td{
-    padding:15px;
-    border-bottom:1px solid #ddd;
-}
-
-.total-box{
-    margin-top:20px;
-    font-size:28px;
-    font-weight:bold;
-}
-
-.pay-btn{
-    width:100%;
-    padding:18px;
-    border:none;
-    margin-top:20px;
-    background:#16a34a;
-    color:white;
-    font-size:24px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-footer{
-    margin-top:50px;
-    text-align:center;
-    padding:30px;
-    color:white;
-    background:#071633;
-}
+/* =========================
+   SEARCH
+========================= */
 
 .search-section{
     text-align:center;
@@ -147,45 +91,288 @@ footer{
 
 .search-section input{
     width:60%;
-    max-width:600px;
-    padding:15px;
-    border-radius:10px;
-    border:1px solid #ccc;
+    max-width:700px;
+    padding:15px 20px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
     font-size:16px;
+    transition:.3s;
 }
+
+.search-section input:focus{
+    outline:none;
+    border-color:#2563eb;
+    box-shadow:0 0 10px rgba(37,99,235,.2);
+}
+
+/* =========================
+   CATEGORY BUTTONS
+========================= */
 
 .categories{
     text-align:center;
-    margin-bottom:20px;
+    margin-bottom:30px;
 }
 
 .categories button{
-    margin:5px;
-    padding:10px 20px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
     background:#2563eb;
     color:white;
+    border:none;
+    padding:12px 22px;
+    margin:5px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
 }
 
 .categories button:hover{
-    opacity:0.9;
+    transform:translateY(-2px);
+    background:#1d4ed8;
 }
 
-.qty-btn{
-    padding:5px 10px;
-    margin:0 5px;
+/* =========================
+   PRODUCTS GRID
+========================= */
+
+.products{
+    max-width:1300px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+    padding:20px;
+}
+
+/* =========================
+   PRODUCT CARD
+========================= */
+
+.product{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.product:hover{
+    transform:translateY(-8px);
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.15);
+}
+
+.product img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.product h3{
+    margin-top:15px;
+    text-align:center;
+    font-size:26px;
+}
+
+.price{
+    color:#16a34a;
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+.product button{
+    width:90%;
+    margin:15px auto 20px;
+    display:block;
+    padding:14px;
     border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.product button:hover{
+    background:#1d4ed8;
+}
+
+/* =========================
+   CART
+========================= */
+
+.cart-box{
+    max-width:1300px;
+    margin:50px auto;
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.08);
+}
+
+.cart-box h2{
+    margin-bottom:20px;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#0f172a;
+    color:white;
+}
+
+th,
+td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #e5e7eb;
+}
+
+tbody tr:hover{
+    background:#f8fafc;
+}
+
+/* =========================
+   QUANTITY BUTTONS
+========================= */
+
+.qty-btn{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:6px 12px;
     border-radius:5px;
     cursor:pointer;
+    margin:0 5px;
 }
+
+.qty-btn:hover{
+    background:#1d4ed8;
+}
+
+/* =========================
+   REMOVE BUTTON
+========================= */
 
 .remove-btn{
     background:#dc2626;
     color:white;
     border:none;
     padding:8px 12px;
-    border-radius:5px;
+    border-radius:6px;
     cursor:pointer;
+}
+
+.remove-btn:hover{
+    background:#b91c1c;
+}
+
+/* =========================
+   TOTAL
+========================= */
+
+.total-box{
+    text-align:right;
+    margin-top:25px;
+    font-size:30px;
+    font-weight:bold;
+    color:#16a34a;
+}
+
+/* =========================
+   PAY BUTTON
+========================= */
+
+.pay-btn{
+    width:100%;
+    margin-top:25px;
+    padding:18px;
+    border:none;
+    border-radius:10px;
+    background:#16a34a;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.pay-btn:hover{
+    background:#15803d;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    margin-top:60px;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .logo{
+        font-size:26px;
+        text-align:center;
+    }
+
+    .hero{
+        padding:70px 20px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .search-section input{
+        width:90%;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .cart-box{
+        margin:20px;
+        padding:20px;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+
+    .total-box{
+        text-align:center;
+        font-size:24px;
+    }
 }
