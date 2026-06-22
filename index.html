@@ -1,47 +1,82 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mini Shop</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Shop</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1>🛒 Mini E-Commerce Store</h1>
-  <div class="cart">
-    Cart: <span id="cart-count">0</span>
-  </div>
+<header class="navbar">
+    <h1>🛒 Mini E-Commerce Store</h1>
+
+    <div class="cart-icon">
+        🛍️ Cart: <span id="cart-count">0</span>
+    </div>
 </header>
+
+<section class="hero">
+    <h2>Welcome to Mini Shop</h2>
+    <p>Best Deals on Electronics</p>
+</section>
 
 <section class="products">
 
-  <div class="product">
-    <h2>Phone</h2>
-    <p>₹15,000</p>
-    <button onclick="addToCart('Phone', 15000)">Add to Cart</button>
-  </div>
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500"
+             alt="Phone">
 
-  <div class="product">
-    <h2>Laptop</h2>
-    <p>₹55,000</p>
-    <button onclick="addToCart('Laptop', 55000)">Add to Cart</button>
-  </div>
+        <h2>Smart Phone</h2>
+        <p class="price">₹15,000</p>
 
-  <div class="product">
-    <h2>Headphones</h2>
-    <p>₹2,000</p>
-    <button onclick="addToCart('Headphones', 2000)">Add to Cart</button>
-  </div>
+        <button onclick="addToCart('Phone',15000)">
+            Add To Cart
+        </button>
+    </div>
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500"
+             alt="Laptop">
+
+        <h2>Laptop</h2>
+        <p class="price">₹55,000</p>
+
+        <button onclick="addToCart('Laptop',55000)">
+            Add To Cart
+        </button>
+    </div>
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"
+             alt="Headphones">
+
+        <h2>Headphones</h2>
+        <p class="price">₹2,000</p>
+
+        <button onclick="addToCart('Headphones',2000)">
+            Add To Cart
+        </button>
+    </div>
 
 </section>
 
 <section class="cart-box">
-  <h2>Your Cart</h2>
-  <ul id="cart-items"></ul>
-  <h3>Total: ₹<span id="total">0</span></h3>
+
+    <h2>🛍️ Shopping Cart</h2>
+
+    <ul id="cart-items"></ul>
+
+    <div class="total-box">
+        <h3>Total: ₹<span id="total">0</span></h3>
+    </div>
+
 </section>
 
 <script src="app.js"></script>
+
 </body>
 </html>
+```
