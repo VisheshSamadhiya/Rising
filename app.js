@@ -1,37 +1,133 @@
 let cart = [];
 let total = 0;
 
-function addToCart(name, price) {
-    cart.push({ name, price });
-    total += price;
+function addToCart(name, price){
 
-    document.getElementById("cart-count").innerText = cart.length;
-    document.getElementById("total").innerText = total;
+    const existing =
+        cart.find(item => item.name === name);
+
+    if(existing){
+        existing.qty++;
+    }else{
+        cart.push({
+            name,
+            price,
+            qty:1
+        });
+    }
 
     renderCart();
 }
 
-function renderCart() {
-    const cartItems = document.getElementById("cart-items");
+function renderCart(){
+
+    const cartItems =
+        document.getElementById("cart-items");
 
     cartItems.innerHTML = "";
 
-    cart.forEach(item => {
-        const li = document.createElement("li");
-        li.innerText = `${item.name} - ₹${item.price}`;
-        cartItems.appendChild(li);
+    total = 0;
+
+    cart.forEach((item,index)=>{
+
+        total += item.price * item.qty;
+
+        cartItems.innerHTML += `
+        <tr>
+            <td>${item.name}</td>
+
+            <td>
+                <button class="qty-btn"
+                onclick="decreaseQty(${index})">-</button>
+
+                ${item.qty}
+
+                <button class="qty-btn"
+                onclick="increaseQty(${index})">+</button>
+            </td>
+
+            <td>₹${(item.price * item.qty).toLocaleString()}</td>
+
+            <td>
+                <button onclick="removeItem(${index})">
+                    ❌ Remove
+                </button>
+            </td>
+        </tr>`;
+    });
+
+    document.getElementById("cart-count")
+        .innerText = cart.length;
+
+    document.getElementById("total")
+        .innerText = total.toLocaleString();
+}
+
+function increaseQty(index){
+    cart[index].qty++;
+    renderCart();
+}
+
+function decreaseQty(index){
+    if(cart[index].qty > 1){
+        cart[index].qty--;
+    }
+    renderCart();
+}
+
+function removeItem(index){
+    cart.splice(index,1);
+    renderCart();
+}
+
+function searchProducts(){
+
+    let input =
+    document.getElementById("searchInput")
+    .value.toLowerCase();
+
+    let products =
+    document.querySelectorAll(".product");
+
+    products.forEach(product => {
+
+        let text =
+        product.innerText.toLowerCase();
+
+        product.style.display =
+        text.includes(input)
+        ? "block"
+        : "none";
     });
 }
 
-function payNow() {
-    if (cart.length === 0) {
-        alert("Your cart is empty!");
+function filterProducts(category){
+
+    let products =
+    document.querySelectorAll(".product");
+
+    products.forEach(product => {
+
+        if(category === "all"){
+            product.style.display = "block";
+        }else{
+            product.style.display =
+            product.classList.contains(category)
+            ? "block"
+            : "none";
+        }
+    });
+}
+
+function payNow(){
+
+    if(total <= 0){
+        alert("Cart is empty!");
         return;
     }
 
-    alert(`Proceeding to payment of ₹${total}`) 
-  }
-  
-function payNow() {
-    alert("Payment button clicked!");
+    alert(
+        "Proceeding to payment of ₹" +
+        total.toLocaleString()
+    );
 }
