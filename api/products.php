@@ -10,6 +10,10 @@ $products = [
     [
         "name" => "Laptop",
         "price" => 55000
+    ],
+    [
+        "name" => "Tablet",
+        "price" => 25000
     ]
 ];
 
