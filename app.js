@@ -1,34 +1,104 @@
-require("dotenv").config();
+let cart = [];
+let total = 0;
 
-const express = require("express");
-const helmet = require("helmet");
-const cors = require("cors");
-const compression = require("compression");
-const morgan = require("morgan");
-
-const app = express();
-
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
-app.use(compression());
-app.use(morgan("dev"));
-
-app.get("/", (req, res) => {
-    res.json({
-        success: true,
-        message: "Rising Backend Running"
+function addToCart(name, price) {
+    cart.push({
+        name: name,
+        price: price
     });
-});
 
-const PORT = process.env.PORT || 3000;
+    total += price;
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+    document.getElementById("cart-count").innerText = cart.length;
+    document.getElementById("total").innerText = total;
 
-fetch("/api/products")
-.then(res => res.json())
-.then(data => {
-    console.log(data);
-});
+    renderCart();
+}
+
+function renderCart() {
+    const cartItems = document.getElementById("cart-items");
+
+    cartItems.innerHTML = "";
+
+    cart.forEach((item, index) => {
+        cartItems.innerHTML += `
+            <tr>
+                <td>${item.name}</td>
+                <td>1</td>
+                <td>₹${item.price}</td>
+                <td>
+                    <button class="remove-btn"
+                    onclick="removeItem(${index})">
+                        Remove
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+}
+
+function removeItem(index) {
+    total -= cart[index].price;
+
+    cart.splice(index, 1);
+
+    document.getElementById("cart-count").innerText = cart.length;
+    document.getElementById("total").innerText = total;
+
+    renderCart();
+}
+
+function payNow() {
+    if (cart.length === 0) {
+        alert("Cart is empty");
+        return;
+    }
+
+    alert(
+        "Payment Gateway Integration Coming Soon\n\nTotal: ₹" + total
+    );
+}
+
+function searchProducts() {
+    let input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    let products =
+        document.querySelectorAll(".product");
+
+    products.forEach(product => {
+        let name =
+            product.querySelector("h3")
+            .innerText
+            .toLowerCase();
+
+        if (name.includes(input)) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+    });
+}
+
+function filterProducts(category) {
+
+    let products =
+        document.querySelectorAll(".product");
+
+    products.forEach(product => {
+
+        if (category === "all") {
+            product.style.display = "block";
+        }
+        else if (
+            product.classList.contains(category)
+        ) {
+            product.style.display = "block";
+        }
+        else {
+            product.style.display = "none";
+        }
+    });
+}
