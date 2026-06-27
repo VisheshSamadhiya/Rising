@@ -2,22 +2,31 @@ let cart = [];
 let total = 0;
 
 function addToCart(name, price) {
-    cart.push({
-        name: name,
-        price: price
-    });
-
+    cart.push({ name, price });
     total += price;
 
+    updateUI();
+}
+
+function removeItem(index) {
+    total -= cart[index].price;
+    cart.splice(index, 1);
+
+    updateUI();
+}
+
+function updateUI() {
     document.getElementById("cart-count").innerText = cart.length;
     document.getElementById("total").innerText = total;
 
     renderCart();
+
+    const payBtn = document.getElementById("payBtn");
+    payBtn.disabled = cart.length === 0;
 }
 
 function renderCart() {
     const cartItems = document.getElementById("cart-items");
-
     cartItems.innerHTML = "";
 
     cart.forEach((item, index) => {
@@ -26,27 +35,13 @@ function renderCart() {
                 <td>${item.name}</td>
                 <td>1</td>
                 <td>₹${item.price}</td>
-                <td>
-                    <button class="remove-btn"
-                    onclick="removeItem(${index})">
-                        Remove
-                    </button>
-                </td>
+                <td><button onclick="removeItem(${index})">Remove</button></td>
             </tr>
         `;
     });
 }
 
-function removeItem(index) {
-    total -= cart[index].price;
-
-    cart.splice(index, 1);
-
-    document.getElementById("cart-count").innerText = cart.length;
-    document.getElementById("total").innerText = total;
-
-    renderCart();
-}
+/* ---------------- PAYMENT (LINK BASED) ---------------- */
 
 function payNow() {
     if (cart.length === 0) {
@@ -54,51 +49,10 @@ function payNow() {
         return;
     }
 
-    alert(
-        "Payment Gateway Integration Coming Soon\n\nTotal: ₹" + total
-    );
-}
+    // Optional confirmation
+    let confirmPay = confirm("Proceed to payment gateway? Total: ₹" + total);
 
-function searchProducts() {
-    let input =
-        document.getElementById("searchInput")
-        .value
-        .toLowerCase();
-
-    let products =
-        document.querySelectorAll(".product");
-
-    products.forEach(product => {
-        let name =
-            product.querySelector("h3")
-            .innerText
-            .toLowerCase();
-
-        if (name.includes(input)) {
-            product.style.display = "block";
-        } else {
-            product.style.display = "none";
-        }
-    });
-}
-
-function filterProducts(category) {
-
-    let products =
-        document.querySelectorAll(".product");
-
-    products.forEach(product => {
-
-        if (category === "all") {
-            product.style.display = "block";
-        }
-        else if (
-            product.classList.contains(category)
-        ) {
-            product.style.display = "block";
-        }
-        else {
-            product.style.display = "none";
-        }
-    });
+    if (confirmPay) {
+        window.location.href = "https://rzp.io/rzp/hZNSccu";
+    }
 }

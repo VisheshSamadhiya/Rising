@@ -1,136 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mini Shop</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mini E-Commerce Store</title>
+
+    <meta name="description" content="Mini E-Commerce Store">
+
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/891/891462.png">
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<!-- HEADER -->
 <header class="navbar">
-    <div class="logo">
-        🛒 Mini E-Commerce Store
-    </div>
-
-    <div class="cart-icon">
-        🛍️ Cart: <span id="cart-count">0</span>
-    </div>
+    <div class="logo">🛒 Mini E-Commerce Store</div>
+    <div class="cart-icon">🛍️ Cart: <span id="cart-count">0</span></div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
     <h1>Welcome to Mini Shop</h1>
     <p>Best Deals on Electronics & Accessories</p>
 </section>
 
-<section class="title-section">
-    <h2>Our Products</h2>
-</section>
-
-<section class="search-section">
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="🔍 Search products..."
-        onkeyup="searchProducts()">
-</section>
-
-<section class="categories">
-    <button onclick="filterProducts('all')">All</button>
-    <button onclick="filterProducts('electronics')">Electronics</button>
-    <button onclick="filterProducts('accessories')">Accessories</button>
-    <button onclick="filterProducts('gaming')">Gaming</button>
-</section>
-
-<section class="products">
+<!-- PRODUCTS -->
+<main class="products">
 
     <div class="product electronics">
-        <img src="https://picsum.photos/400/250?random=1" alt="Phone">
         <h3>Smart Phone</h3>
-        <p class="price">₹15,000</p>
-        <button onclick="addToCart('Smart Phone',15000)">
-            Add To Cart
-        </button>
+        <p>₹15000</p>
+        <button onclick="addToCart('Smart Phone',15000)">Add To Cart</button>
     </div>
 
     <div class="product electronics">
-        <img src="https://picsum.photos/400/250?random=2" alt="Laptop">
         <h3>Laptop</h3>
-        <p class="price">₹55,000</p>
-        <button onclick="addToCart('Laptop',55000)">
-            Add To Cart
-        </button>
+        <p>₹55000</p>
+        <button onclick="addToCart('Laptop',55000)">Add To Cart</button>
     </div>
 
-    <div class="product accessories">
-        <img src="https://picsum.photos/400/250?random=3" alt="Headphones">
-        <h3>Headphones</h3>
-        <p class="price">₹2,000</p>
-        <button onclick="addToCart('Headphones',2000)">
-            Add To Cart
-        </button>
-    </div>
+</main>
 
-    <div class="product accessories">
-        <img src="https://picsum.photos/400/250?random=4" alt="Smart Watch">
-        <h3>Smart Watch</h3>
-        <p class="price">₹4,999</p>
-        <button onclick="addToCart('Smart Watch',4999)">
-            Add To Cart
-        </button>
-    </div>
-
-    <div class="product gaming">
-        <img src="https://picsum.photos/400/250?random=5" alt="Gaming Mouse">
-        <h3>Gaming Mouse</h3>
-        <p class="price">₹1,499</p>
-        <button onclick="addToCart('Gaming Mouse',1499)">
-            Add To Cart
-        </button>
-    </div>
-
-    <div class="product gaming">
-        <img src="https://picsum.photos/400/250?random=6" alt="Keyboard">
-        <h3>Gaming Keyboard</h3>
-        <p class="price">₹2,999</p>
-        <button onclick="addToCart('Gaming Keyboard',2999)">
-            Add To Cart
-        </button>
-    </div>
-
-</section>
-
+<!-- CART -->
 <section class="cart-box">
 
-    <h2>🛍️ Shopping Cart</h2>
+    <h2>🛍️ Cart</h2>
 
     <table>
-        <thead>
-            <tr>
-                <th>Item</th>
-                <th>Qty</th>
-                <th>Price</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-
-        <tbody id="cart-items">
-        </tbody>
-
+        <tbody id="cart-items"></tbody>
     </table>
 
-    <div class="total-box">
+    <div>
         Total: ₹<span id="total">0</span>
     </div>
 
-    <button class="pay-btn" onclick="payNow()">
+    <!-- PAY BUTTON -->
+    <button class="pay-btn" id="payBtn" onclick="payNow()" disabled>
         💳 Pay Now
     </button>
 
 </section>
 
 <footer>
-    © 2026 Vishesh. All rights reserved.
+    © 2026 Mini Shop
 </footer>
 
 <script src="app.js"></script>
