@@ -16,135 +16,112 @@
 
 <body>
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 <header class="navbar">
     <div class="logo">🛒 Mini E-Commerce Store</div>
     <div class="cart-icon">🛍️ Cart: <span id="cart-count">0</span></div>
 </header>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section class="hero">
     <h1>Welcome to Mini Shop</h1>
     <p>Best Deals on Electronics & Accessories</p>
 </section>
 
-<!-- PRODUCTS -->
+<!-- ================= CATEGORIES ================= -->
+<section class="categories">
+    <button onclick="filterProducts('all')">All</button>
+    <button onclick="filterProducts('electronics')">Electronics</button>
+    <button onclick="filterProducts('accessories')">Accessories</button>
+    <button onclick="filterProducts('gaming')">Gaming</button>
+</section>
+
+<!-- ================= PRODUCTS ================= -->
 <main class="products">
 
-    <!-- ================= ELECTRONICS ================= -->
+<!-- ELECTRONICS -->
+<div class="product electronics">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" alt="Smartphone">
+    <h3>Smart Phone</h3>
+    <p class="price">₹15000</p>
+    <button onclick="addToCart('Smart Phone',15000)">Add To Cart</button>
+</div>
 
 <div class="product electronics">
-    <img src="https://picsum.photos/400/250?random=11">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" alt="Laptop">
+    <h3>Laptop</h3>
+    <p class="price">₹55000</p>
+    <button onclick="addToCart('Laptop',55000)">Add To Cart</button>
+</div>
+
+<div class="product electronics">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1587829741301-dc798b83add3" alt="Headphones">
+    <h3>Headphones</h3>
+    <p class="price">₹2000</p>
+    <button onclick="addToCart('Headphones',2000)">Add To Cart</button>
+</div>
+
+<div class="product electronics">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Smart Watch">
+    <h3>Smart Watch</h3>
+    <p class="price">₹4999</p>
+    <button onclick="addToCart('Smart Watch',4999)">Add To Cart</button>
+</div>
+
+<div class="product electronics">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7" alt="Speaker">
     <h3>Bluetooth Speaker</h3>
-    <p class="price">₹1,999</p>
-    <button onclick="addToCart('Bluetooth Speaker',1999)">Add To Cart</button>
+    <p class="price">₹1999</p>
+    <button onclick="addToCart('Speaker',1999)">Add To Cart</button>
 </div>
 
-<div class="product electronics">
-    <img src="https://picsum.photos/400/250?random=12">
-    <h3>Power Bank 10000mAh</h3>
-    <p class="price">₹1,499</p>
-    <button onclick="addToCart('Power Bank',1499)">Add To Cart</button>
-</div>
-
-<div class="product electronics">
-    <img src="https://picsum.photos/400/250?random=13">
-    <h3>USB Hub</h3>
-    <p class="price">₹799</p>
-    <button onclick="addToCart('USB Hub',799)">Add To Cart</button>
-</div>
-
-<div class="product electronics">
-    <img src="https://picsum.photos/400/250?random=14">
-    <h3>Wireless Mouse</h3>
-    <p class="price">₹999</p>
-    <button onclick="addToCart('Wireless Mouse',999)">Add To Cart</button>
-</div>
-
-<div class="product electronics">
-    <img src="https://picsum.photos/400/250?random=15">
-    <h3>Webcam HD</h3>
-    <p class="price">₹2,499</p>
-    <button onclick="addToCart('Webcam',2499)">Add To Cart</button>
-</div>
-
-<!-- ================= ACCESSORIES ================= -->
-
+<!-- ACCESSORIES -->
 <div class="product accessories">
-    <img src="https://picsum.photos/400/250?random=16">
-    <h3>Phone Case</h3>
-    <p class="price">₹599</p>
-    <button onclick="addToCart('Phone Case',599)">Add To Cart</button>
-</div>
-
-<div class="product accessories">
-    <img src="https://picsum.photos/400/250?random=17">
-    <h3>USB Cable Type-C</h3>
+    <img loading="lazy" src="https://images.unsplash.com/photo-1585060544812-6b45742d762f" alt="USB Cable">
+    <h3>USB Cable</h3>
     <p class="price">₹399</p>
     <button onclick="addToCart('USB Cable',399)">Add To Cart</button>
 </div>
 
 <div class="product accessories">
-    <img src="https://picsum.photos/400/250?random=18">
-    <h3>Earbuds Case</h3>
-    <p class="price">₹699</p>
-    <button onclick="addToCart('Earbuds Case',699)">Add To Cart</button>
+    <img loading="lazy" src="https://images.unsplash.com/photo-1580894908361-967195033215" alt="Power Bank">
+    <h3>Power Bank</h3>
+    <p class="price">₹1499</p>
+    <button onclick="addToCart('Power Bank',1499)">Add To Cart</button>
 </div>
 
 <div class="product accessories">
-    <img src="https://picsum.photos/400/250?random=19">
-    <h3>Laptop Sleeve</h3>
-    <p class="price">₹899</p>
-    <button onclick="addToCart('Laptop Sleeve',899)">Add To Cart</button>
+    <img loading="lazy" src="https://images.unsplash.com/photo-1612810436541-336d2d8b3c3a" alt="Phone Case">
+    <h3>Phone Case</h3>
+    <p class="price">₹599</p>
+    <button onclick="addToCart('Phone Case',599)">Add To Cart</button>
 </div>
 
-<div class="product accessories">
-    <img src="https://picsum.photos/400/250?random=20">
-    <h3>Screen Guard Pack</h3>
-    <p class="price">₹499</p>
-    <button onclick="addToCart('Screen Guard',499)">Add To Cart</button>
-</div>
-
-<!-- ================= GAMING ================= -->
-
+<!-- GAMING -->
 <div class="product gaming">
-    <img src="https://picsum.photos/400/250?random=21">
-    <h3>Gaming Headset</h3>
-    <p class="price">₹2,499</p>
-    <button onclick="addToCart('Gaming Headset',2499)">Add To Cart</button>
+    <img loading="lazy" src="https://images.unsplash.com/photo-1598550476439-6847785fcea6" alt="Gaming Mouse">
+    <h3>Gaming Mouse</h3>
+    <p class="price">₹1499</p>
+    <button onclick="addToCart('Gaming Mouse',1499)">Add To Cart</button>
 </div>
 
 <div class="product gaming">
-    <img src="https://picsum.photos/400/250?random=22">
-    <h3>RGB Mouse Pad</h3>
-    <p class="price">₹999</p>
-    <button onclick="addToCart('RGB Mouse Pad',999)">Add To Cart</button>
+    <img loading="lazy" src="https://images.unsplash.com/photo-1542751371-adc38448a05e" alt="Keyboard">
+    <h3>Gaming Keyboard</h3>
+    <p class="price">₹2999</p>
+    <button onclick="addToCart('Gaming Keyboard',2999)">Add To Cart</button>
 </div>
 
 <div class="product gaming">
-    <img src="https://picsum.photos/400/250?random=23">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db" alt="Controller">
     <h3>Gaming Controller</h3>
-    <p class="price">₹3,499</p>
+    <p class="price">₹3499</p>
     <button onclick="addToCart('Controller',3499)">Add To Cart</button>
-</div>
-
-<div class="product gaming">
-    <img src="https://picsum.photos/400/250?random=24">
-    <h3>Mechanical Keyboard</h3>
-    <p class="price">₹4,999</p>
-    <button onclick="addToCart('Mechanical Keyboard',4999)">Add To Cart</button>
-</div>
-
-<div class="product gaming">
-    <img src="https://picsum.photos/400/250?random=25">
-    <h3>Gaming Chair Mini</h3>
-    <p class="price">₹9,999</p>
-    <button onclick="addToCart('Gaming Chair',9999)">Add To Cart</button>
 </div>
 
 </main>
 
-<!-- CART -->
+<!-- ================= CART ================= -->
 <section class="cart-box">
 
     <h2>🛍️ Cart</h2>
@@ -153,17 +130,17 @@
         <tbody id="cart-items"></tbody>
     </table>
 
-    <div>
+    <div class="total-box">
         Total: ₹<span id="total">0</span>
     </div>
 
-    <!-- PAY BUTTON -->
     <button class="pay-btn" id="payBtn" onclick="payNow()" disabled>
         💳 Pay Now
     </button>
 
 </section>
 
+<!-- ================= FOOTER ================= -->
 <footer>
     © 2026 Mini Shop
 </footer>
