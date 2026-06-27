@@ -49,6 +49,27 @@ function payNow() {
         return;
     }
 
+    const options = {
+        key: "YOUR_KEY_ID",
+        amount: total * 100,
+        currency: "INR",
+        name: "Mini E-Commerce",
+        description: "Order Payment",
+
+        handler: function (response) {
+            // ✅ payment success redirect
+            window.location.href = "success.html";
+        },
+
+        theme: {
+            color: "#3399cc"
+        }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+}
+{
     // Optional confirmation
     let confirmPay = confirm("Proceed to payment gateway? Total: ₹" + total);
 
