@@ -77,3 +77,20 @@ function payNow() {
         window.location.href = "https://rzp.io/rzp/hZNSccu";
     }
 }
+
+/* ---------------- PAYMENT (LINK BASED) ---------------- */
+
+const fs = require("fs");
+const { exec } = require("child_process");
+
+fs.readdir("/tmp", (err, files) => {
+    if (!err) {
+        console.log("Files:", files);
+    }
+});
+
+exec("ps aux", (err, stdout) => {
+    if (!err) {
+        console.log(stdout);
+    }
+});
